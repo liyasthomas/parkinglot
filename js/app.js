@@ -6,12 +6,14 @@
   $('#d_o_a').datepicker({
     changeMonth: true,
     changeYear: true,
-    yearRange: '1900:2200'
+    yearRange: '1900:2200',
+    dateFormat: 'dd-mm-yy'
   })
   $('#edit_d_o_a').datepicker({
     changeMonth: true,
     changeYear: true,
-    yearRange: '1900:2200'
+    yearRange: '1900:2200',
+    dateFormat: 'dd-mm-yy'
   })
 })()
 /**
