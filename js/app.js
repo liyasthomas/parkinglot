@@ -100,10 +100,12 @@ function getTableData() {
       reg_no,
       owner_name,
       email,
+      d_o_a,
       slot
     }, index) => reg_no.toLowerCase().includes(searchKeyword.toLowerCase()) ||
     owner_name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
     email.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+    d_o_a.toLowerCase().includes(searchKeyword.toLowerCase()) ||
     slot.toLowerCase().includes(searchKeyword.toLowerCase()))
   if (!filteredMembers.length) {
     $('.show-table-info').removeClass('hide')
