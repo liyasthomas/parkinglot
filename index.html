@@ -19,16 +19,16 @@
 <body>
   <div class="container">
     <div class="page-header-extended">
-      <h2 class="page-title">Parking lot for Buy me a coffee</h2>
+      <h4 class="page-title">Parking lot for Buy me a coffee</h4>
     </div>
+      <div class="info-table-header-block">
+        <input type="text" placeholder="Search by vechiles Registration no, Owner name, Email, Date of allocation, Slot etc." id="member_search" onkeyup="getTableData()">
+      </div>
     <div class="starter-template">
       <div class="info-table-header-block">
         <button type="button slot" class="btn btn-primary slot-button" data-toggle="modal" data-target="#addnewModal">
           Add new vehicle
         </button>
-      </div>
-      <div class="info-table-header-block">
-        <input type="text" placeholder="Search by vechiles Registration no, Owner name, Email, Date of allocation, Slot etc." id="member_search" onkeyup="getTableData()">
       </div>
       <!-- Modal -->
       <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="addnewModalTitle" aria-hidden="true">
@@ -85,19 +85,19 @@
           <tr>
             <th>#</th>
             <th>
-              <a href="#" onclick="sortBy('reg_no')">Registration no</a>
+              <span onclick="sortBy('reg_no')">Registration no</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('owner_name')">Owner name</a>
+              <span onclick="sortBy('owner_name')">Owner name</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('email')">Email</a>
+              <span onclick="sortBy('email')">Email</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('d_o_a')">Date of allocation (mm/dd/yy)</a>
+              <span onclick="sortBy('d_o_a')">Date of allocation (mm/dd/yy)</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('slot')">Slot number</a>
+              <span onclick="sortBy('slot')">Slot number</span>
             </th>
             <th>Actions</th>
           </tr>

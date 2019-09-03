@@ -1,6 +1,14 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
+  background-color: #f0eceb;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .hide {
@@ -8,7 +16,13 @@ body {
 }
 
 .starter-template {
+  margin-top: 32px;
   padding: 32px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-header-extended {
@@ -27,7 +41,7 @@ body {
 
 .page-title {
   text-align: center;
-  color: #FF813F;
+  color: #b2b2b2;
   font-weight: 700;
 }
 
@@ -36,12 +50,24 @@ button {
   margin-right: 4px;
 }
 
+.slot-button {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 32px;
+  width: 100%;
+}
+
 #member_search {
   width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 0;
+  border-radius: 32px;
   font-size: 16px;
-  padding: 8px 16px
+  padding: 16px 32px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .info-table-header-block {
