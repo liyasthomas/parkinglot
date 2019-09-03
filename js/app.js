@@ -176,6 +176,17 @@ function showEditModal(id) {
  * Store Updated Member Data into the storage
  */
 function updateMemberData() {
+  var members = getMembers()
+  members.forEach((item) => {
+    if ($('#edit_slot').val() == item.slot) {
+      if ($('#edit_d_o_a').val() == item.d_o_a) {
+        alert("Can't allocate slot. Slot is not availabe on the selected day.");
+        window.location.reload();
+        this.preventDefault();
+        return false;
+      }
+    }
+  })
   const allMembers = getMembers()
   const memberId = $('#member_id').val()
   const member = allMembers.find(({

@@ -27,7 +27,7 @@
         </button>
       </div>
       <div class="info-table-header-block">
-        <input type="text" placeholder="Search for vechiles" id="member_search" onkeyup="getTableData()">
+        <input type="text" placeholder="Search by vechiles Registration no, Owner name, Email, Date of allocation, Slot etc." id="member_search" onkeyup="getTableData()">
       </div>
       <!-- Modal -->
       <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="addnewModalTitle" aria-hidden="true">
@@ -161,7 +161,7 @@
             <h4 class="modal-title" id="editModal">Edit Member Information</h4>
           </div>
           <div class="modal-body">
-            <form onsubmit="updateMemberData(); return false;">
+            <form>
               <div class="form-group">
                 <label for="edit_reg_no">Registration no
                   <span class="required-field">*</span>
@@ -196,7 +196,7 @@
                 <input type="hidden" class="form-control" id="member_id">
               </div>
               <div class="modal-footer-extended">
-                <button class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-success" onclick="updateMemberData();">Update</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
               </div>
             </form>
