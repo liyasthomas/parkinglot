@@ -33,6 +33,7 @@ body {
 
 button {
   margin-bottom: 4px;
+  margin-right: 4px;
 }
 
 #member_search {
@@ -96,5 +97,15 @@ input[data-readonly] {
   table {
     display: flex;
     flex-direction: column;
+  }
+
+  tr {
+    width: 100%;
+  }
+
+  tr th,
+  tr td {
+    display: inline-flex;
+    width: 100%;
   }
 }
