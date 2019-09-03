@@ -94,17 +94,17 @@ input[data-readonly] {
 }
 
 @media all and (max-width: 720px) {
-  table {
+  .table {
     display: flex;
     flex-direction: column;
   }
 
-  tr {
+  .table tr {
     width: 100%;
   }
 
-  tr th,
-  tr td {
+  .table tr th,
+  .table tr td {
     display: inline-flex;
     width: 100%;
   }
