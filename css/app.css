@@ -91,3 +91,10 @@ button {
 input[data-readonly] {
   pointer-events: none;
 }
+
+@media all and (max-width: 720px) {
+  table {
+    display: flex;
+    flex-direction: column;
+  }
+}
