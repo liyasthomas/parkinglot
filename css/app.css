@@ -2,7 +2,7 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   outline: 0;
-	border: 0;
+  border: 0;
 }
 
 body {
@@ -12,18 +12,35 @@ body {
   color: rgba(0, 0, 0, 0.6);
 }
 
+h1,
+h2,
+h3,
+h4,
+label {
+  font-weight: 700;
+}
+
 .hide {
   display: none;
 }
 
 .starter-template {
-  margin: 32px 0;
+  margin: 32px auto;
   padding: 32px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
+}
+
+.modal-dialog {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 8px;
 }
 
 .page-header-extended {
