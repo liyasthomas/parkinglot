@@ -20,6 +20,7 @@
 function guid() {
   return parseInt(Date.now() + Math.random())
 }
+
 /**
  * Create and Store New Member
  */
@@ -36,7 +37,10 @@ function saveMemberInfo() {
   members.forEach((item) => {
     if (obj.slot == item.slot) {
       if (obj.d_o_a == item.d_o_a) {
-        return;
+        alert("Can't allocate slot. Slot is not availabe on the selected day.");
+        window.location.reload();
+        this.preventDefault();
+        return false;
       }
     }
   })
