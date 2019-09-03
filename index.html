@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Sudipto Chowdhury">
+  <title>Parking lot demo</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header-extended">
+      <h2 class="page-title">Parking lot demo</h2>
+    </div>
+    <div class="starter-template">
+      <div class="info-table-header-block">
+        <button type="button slot" class="btn btn-primary slot-button" data-toggle="modal" data-target="#addnewModal">
+          Add new vehicle
+        </button>
+      </div>
+      <div class="info-table-header-block">
+        <input type="text" placeholder="Search for vechiles" id="member_search" onkeyup="getTableData()">
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="addnewModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="addnewModalTitle">Add new vehicle</h4>
+            </div>
+            <!-- User Create Modal Start -->
+            <div class="modal-body">
+              <form id="input_form" onsubmit="saveMemberInfo(); return false;">
+                <div class="form-group">
+                  <label for="reg_no">Registration no
+                    <span class="required-field">*</span>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Enter registration no:" id="reg_no" required />
+                </div>
+                <div class="form-group">
+                  <label for="owner_name">Owner name
+                    <span class="required-field">*</span>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Enter owner name:" id="owner_name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email
+                    <span class="required-field">*</span>
+                  </label>
+                  <input type="email" class="form-control" placeholder="Enter email" id="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="d_o_a">Date of allocation (mm/dd/yy)
+                    <span class="required-field">*</span>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Enter date of allocation" id="d_o_a" required onkeypress="return false;" />
+                </div>
+                <div class="form-group">
+                  <label for="slot">Slot number (1-10)
+                    <span class="required-field">*</span>
+                  </label>
+                  <input type="number" class="form-control" placeholder="Enter slot number (1-10)" id="slot" required min="1" max="10" maxlength="2">
+                </div>
+                <div class="modal-footer-extended">
+                  <button class="btn btn-primary">Create</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+            <!-- User Create Modal End -->
+          </div>
+        </div>
+      </div>
+      <table id="member_table" class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>
+              <a href="#" onclick="sortBy('reg_no')">Registration no</a>
+              <i class="fa fa-sort"></i>
+            </th>
+            <th>
+              <a href="#" onclick="sortBy('owner_name')">Owner name</a>
+              <i class="fa fa-sort"></i>
+            </th>
+            <th>
+              <a href="#" onclick="sortBy('email')">Email</a>
+              <i class="fa fa-sort"></i>
+            </th>
+            <th>
+              <a href="#" onclick="sortBy('d_o_a')">Date of allocation (mm/dd/yy)</a>
+              <i class="fa fa-sort"></i>
+            </th>
+            <th>
+              <a href="#" onclick="sortBy('slot')">Slot number (1-10)</a>
+              <i class="fa fa-sort"></i>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="show-table-info hide">
+        <div class="alert alert-info center">
+          <strong>Parking lot is empty</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User Information Modal Start -->
+  <div id="show_user_info">
+    <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="showModal">Member Information</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="show_reg_no">Registration no</label>
+              <input type="text" class="form-control" id="show_reg_no" value="" disabled>
+            </div>
+            <div class="form-group">
+              <label for="show_owner_name">Owner name</label>
+              <input type="text" class="form-control" id="show_owner_name" value="" disabled>
+            </div>
+            <div class="form-group">
+              <label for="show_email">Email</label>
+              <input type="email" class="form-control" id="show_email" value="" disabled>
+            </div>
+            <div class="form-group">
+              <label for="show_d_o_a">Date of allocation (mm/dd/yy)</label>
+              <input type="text" class="form-control" id="show_d_o_a" value="" disabled>
+            </div>
+            <div class="form-group">
+              <label for="show_slot">Slot number (1-10)</label>
+              <input type="text" class="form-control" id="show_slot" value="" disabled>
+            </div>
+            <div class="modal-footer-extended">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User Information Modal End -->
+  <!-- User Edit Modal Start -->
+  <div id="show_user_info">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="editModal">Edit Member Information</h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="updateMemberData(); return false;">
+              <div class="form-group">
+                <label for="edit_reg_no">Registration no
+                  <span class="required-field">*</span>
+                </label>
+                <input type="text" class="form-control" id="edit_reg_no" value="" required />
+              </div>
+              <div class="form-group">
+                <label for="edit_owner_name">Owner name
+                  <span class="required-field">*</span>
+                </label>
+                <input type="text" class="form-control" id="edit_owner_name" value="" required />
+              </div>
+              <div class="form-group">
+                <label for="edit_email">Email
+                  <span class="required-field">*</span>
+                </label>
+                <input type="email" class="form-control" id="edit_email" value="" required />
+              </div>
+              <div class="form-group">
+                <label for="edit_d_o_a">Date of allocation (mm/dd/yy)
+                  <span class="required-field">*</span>
+                </label>
+                <input type="text" class="form-control" id="edit_d_o_a" value="" required onkeypress="return false;" />
+              </div>
+              <div class="form-group">
+                <label for="edit_slot">Slot number (1-10)
+                  <span class="required-field">*</span>
+                </label>
+                <input type="text" class="form-control" id="edit_slot" value="" required />
+              </div>
+              <div class="form-group">
+                <input type="hidden" class="form-control" id="member_id">
+              </div>
+              <div class="modal-footer-extended">
+                <button class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User Edit Modal End -->
+  <!-- Delete Confirmation Dialog Start -->
+  <div id="show_user_info">
+    <div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="deleteDialogTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="deleteDialog">Warning!</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Are you sure, want to delete this vehicle? </h4>
+            <input type="hidden" id="deleted-member-id" value="">
+            <div class="modal-footer-extended">
+              <button class="btn btn-danger" onclick="deleteMemberData()">Delete</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Confirmation Dialog End -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
