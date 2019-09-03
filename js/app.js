@@ -31,12 +31,17 @@ function saveMemberInfo() {
     const result = document.getElementById(item).value
     if (result) {
       obj[item] = result;
+    } else {
+      alert("All fields are required");
+      window.location.reload();
+      this.preventDefault();
+      return false;
     }
   })
   var members = getMembers()
   members.forEach((item) => {
-    if (obj.slot == item.slot) {
-      if (obj.d_o_a == item.d_o_a) {
+    if (obj.slot === item.slot) {
+      if (obj.d_o_a === item.d_o_a) {
         alert("Can't allocate slot. Slot is not availabe on the selected day.");
         window.location.reload();
         this.preventDefault();
@@ -176,10 +181,16 @@ function showEditModal(id) {
  * Store Updated Member Data into the storage
  */
 function updateMemberData() {
+  if ($('#edit_reg_no').val() == '') {
+    alert("All fields are required");
+    window.location.reload();
+    this.preventDefault();
+    return false;
+  }
   var members = getMembers()
   members.forEach((item) => {
-    if ($('#edit_slot').val() == item.slot) {
-      if ($('#edit_d_o_a').val() == item.d_o_a) {
+    if ($('#edit_slot').val() === item.slot) {
+      if ($('#edit_d_o_a').val() === item.d_o_a) {
         alert("Can't allocate slot. Slot is not availabe on the selected day.");
         window.location.reload();
         this.preventDefault();
