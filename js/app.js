@@ -181,7 +181,7 @@ function showEditModal(id) {
  * Store Updated Member Data into the storage
  */
 function updateMemberData() {
-  if ($('#edit_reg_no').val() == '') {
+  if ($('#edit_reg_no').val() == '' || $('#edit_owner_name').val() == '' || $('#edit_email').val() == '' || $('#edit_d_o_a').val() == '' || $('#edit_slot').val() == '') {
     alert("All fields are required");
     window.location.reload();
     this.preventDefault();
