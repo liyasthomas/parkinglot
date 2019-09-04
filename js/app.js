@@ -6,12 +6,14 @@
   $('#d_o_a').datepicker({
     changeMonth: true,
     changeYear: true,
-    yearRange: '1900:2200'
+    yearRange: '1900:2200',
+    dateFormat: 'dd-mm-yy'
   })
   $('#edit_d_o_a').datepicker({
     changeMonth: true,
     changeYear: true,
-    yearRange: '1900:2200'
+    yearRange: '1900:2200',
+    dateFormat: 'dd-mm-yy'
   })
 })()
 /**
@@ -82,19 +84,12 @@ function getMembers() {
   }
 }
 /**
- * Format Age of All Members
- */
-function getFormattedMembers() {
-  const members = getMembers()
-  return members
-}
-/**
  * Populating Table with stored data
  */
 function getTableData() {
   $('#member_table').find('tr:not(:first)').remove()
   const searchKeyword = $('#member_search').val()
-  const members = getFormattedMembers()
+  const members = getMembers()
   const filteredMembers = members.filter(({
       reg_no,
       owner_name,
@@ -136,9 +131,9 @@ function insertIntoTableView(item, tableIndex) {
   lastNameCell.innerHTML = item.owner_name
   emailCell.innerHTML = item.email
   dateOfBirthCell.innerHTML = item.d_o_a
-  slotCell.innerHTML = `<a class="tag">${item.slot}</a>`
+  slotCell.innerHTML = `<span class="tag">${item.slot}</span>`
   const guid = item.id
-  actionCell.innerHTML = `<button class="btn btn-sm btn-default" onclick="showMemberData(${guid})">View</button> <button class="btn btn-sm btn-primary" onclick="showEditModal(${guid})">Edit</button> <button class="btn btn-sm btn-danger" onclick="showDeleteModal(${guid})">Delete</button>`
+  actionCell.innerHTML = `<button class="btn btn-sm btn-secondary" onclick="showMemberData(${guid})">View</button> <button class="btn btn-sm btn-primary" onclick="showEditModal(${guid})">Edit</button> <button class="btn btn-sm btn-danger" onclick="showDeleteModal(${guid})">Delete</button>`
 }
 /**
  * Get Total Row of Table
@@ -246,6 +241,7 @@ function deleteMemberData() {
  */
 function sortBy(type) {
   $("#member_table").find("tr:not(:first)").remove();
+
   var totalClickOfType = parseInt(localStorage.getItem(type));
   if (!totalClickOfType) {
     totalClickOfType = 1;
@@ -258,11 +254,14 @@ function sortBy(type) {
     }
     localStorage.setItem(type, totalClickOfType);
   }
+
   var searchKeyword = $('#member_search').val();
   var members = getFormattedMembers();
+
   var sortedMembers = members.sort(function (a, b) {
     return (totalClickOfType == 2) ? a[type] > b[type] : a[type] < b[type];
   });
+
   sortedMembers.forEach(function (item, index) {
     insertIntoTableView(item, index + 1);
   })

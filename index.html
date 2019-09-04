@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset='utf-8'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="Sudipto Chowdhury">
+  <meta name="author" content="Liyas Thomas">
   <title>Parking lot for Buy me a coffee</title>
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
   <link rel="stylesheet" href="css/app.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
 </head>
@@ -18,16 +18,16 @@
 <body>
   <div class="container">
     <div class="page-header-extended">
-      <h2 class="page-title">Parking lot for Buy me a coffee</h2>
+      <h4 class="page-title">Parking lot for Buy me a coffee</h4>
     </div>
+      <div class="info-table-header-block">
+        <input type="text" placeholder="Search by vechiles Registration no, Owner name, Email, Date of allocation, Slot etc." id="member_search" onkeyup="getTableData()">
+      </div>
     <div class="starter-template">
       <div class="info-table-header-block">
         <button type="button slot" class="btn btn-primary slot-button" data-toggle="modal" data-target="#addnewModal">
           Add new vehicle
         </button>
-      </div>
-      <div class="info-table-header-block">
-        <input type="text" placeholder="Search by vechiles Registration no, Owner name, Email, Date of allocation, Slot etc." id="member_search" onkeyup="getTableData()">
       </div>
       <!-- Modal -->
       <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="addnewModalTitle" aria-hidden="true">
@@ -58,7 +58,7 @@
                   <input type="email" class="form-control" placeholder="Enter email" id="email" required />
                 </div>
                 <div class="form-group">
-                  <label for="d_o_a">Date of allocation (mm/dd/yy)
+                  <label for="d_o_a">Date of allocation
                     <span class="required-field">*</span>
                   </label>
                   <input type="text" class="form-control" placeholder="Enter date of allocation" id="d_o_a" required onkeypress="return false;" />
@@ -79,29 +79,24 @@
           </div>
         </div>
       </div>
-      <table id="member_table" class="table table-bordered table-hover">
+      <table id="member_table" class="table">
         <thead>
           <tr>
             <th>#</th>
             <th>
-              <a href="#" onclick="sortBy('reg_no')">Registration no</a>
-              <i class="fa fa-sort"></i>
+              <span onclick="sortBy('reg_no')">Registration no</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('owner_name')">Owner name</a>
-              <i class="fa fa-sort"></i>
+              <span onclick="sortBy('owner_name')">Owner name</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('email')">Email</a>
-              <i class="fa fa-sort"></i>
+              <span onclick="sortBy('email')">Email</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('d_o_a')">Date of allocation (mm/dd/yy)</a>
-              <i class="fa fa-sort"></i>
+              <span onclick="sortBy('d_o_a')">Date of allocation</span>
             </th>
             <th>
-              <a href="#" onclick="sortBy('slot')">Slot number</a>
-              <i class="fa fa-sort"></i>
+              <span onclick="sortBy('slot')">Slot number</span>
             </th>
             <th>Actions</th>
           </tr>
@@ -112,6 +107,9 @@
           <strong>Parking lot is empty</strong>
         </div>
       </div>
+      <footer>
+        Made by Liyas Thomas | <a href="https://github.com/liyasthomas/parkinglot">GitHub</a>
+      </footer>
     </div>
   </div>
   <!-- User Information Modal Start -->
@@ -120,7 +118,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="showModal">Member Information</h4>
+            <h4 class="modal-title" id="showModal">Vehicle Information</h4>
           </div>
           <div class="modal-body">
             <div class="form-group">
@@ -136,7 +134,7 @@
               <input type="email" class="form-control" id="show_email" value="" disabled>
             </div>
             <div class="form-group">
-              <label for="show_d_o_a">Date of allocation (mm/dd/yy)</label>
+              <label for="show_d_o_a">Date of allocation</label>
               <input type="text" class="form-control" id="show_d_o_a" value="" disabled>
             </div>
             <div class="form-group">
@@ -144,7 +142,7 @@
               <input type="number" class="form-control" id="show_slot" value="" disabled>
             </div>
             <div class="modal-footer-extended">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -158,7 +156,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="editModal">Edit Member Information</h4>
+            <h4 class="modal-title" id="editModal">Edit Vehicle Information</h4>
           </div>
           <div class="modal-body">
             <form>
@@ -181,7 +179,7 @@
                 <input type="email" class="form-control" id="edit_email" value="" required />
               </div>
               <div class="form-group">
-                <label for="edit_d_o_a">Date of allocation (mm/dd/yy)
+                <label for="edit_d_o_a">Date of allocation
                   <span class="required-field">*</span>
                 </label>
                 <input type="text" class="form-control" id="edit_d_o_a" value="" required onkeypress="return false;" />
@@ -219,7 +217,7 @@
             <input type="hidden" id="deleted-member-id" value="">
             <div class="modal-footer-extended">
               <button class="btn btn-danger" onclick="deleteMemberData()">Delete</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>
@@ -227,10 +225,9 @@
     </div>
   </div>
   <!-- Delete Confirmation Dialog End -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
 </body>
 

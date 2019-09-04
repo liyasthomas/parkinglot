@@ -1,10 +1,46 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  border: 0;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
+  background-color: #eee;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+h1,
+h2,
+h3,
+h4,
+label {
+  font-weight: 700;
+}
+
+.hide {
+  display: none;
 }
 
 .starter-template {
+  margin: 32px auto;
   padding: 32px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-dialog {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 8px;
 }
 
 .page-header-extended {
@@ -23,22 +59,59 @@ body {
 
 .page-title {
   text-align: center;
-  color: #FF813F;
+  color: #b2b2b2;
   font-weight: 700;
 }
 
-.add-new-button {
-  float: right;
-  margin-bottom: 10px;
+button {
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+.slot-button {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 32px;
+  width: 100%;
 }
 
 #member_search {
   width: 100%;
-  height: 32px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 0;
+  border-radius: 32px;
   font-size: 16px;
-  padding-left: 10px
+  padding: 16px 32px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+table {
+  border: 1px solid #dee2e6;
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 16px;
+}
+
+td,
+th {
+  padding: 8px 16px;
+  border-top: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  text-align: left;
+}
+
+th {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+td:first-child,
+th:first-child {
+  border-left: 0;
 }
 
 .info-table-header-block {
@@ -62,7 +135,6 @@ body {
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
-  -webkit-transition: color 0.2s;
 }
 
 .tag::after {
@@ -76,12 +148,6 @@ body {
   top: 0;
 }
 
-.tag:hover {
-  background-color: #3c763d;
-  color: white;
-  text-decoration: none;
-}
-
 .center {
   text-align: center;
 }
@@ -90,64 +156,19 @@ input[data-readonly] {
   pointer-events: none;
 }
 
-/* The snackbar - position it at the bottom and in the middle of the screen */
-#snackbar {
-  visibility: hidden;
-  /* Hidden by default. Visible on click */
-  min-width: 250px;
-  /* Set a default minimum width */
-  margin-left: -125px;
-  /* Divide value of min-width by 2 */
-  background-color: #333;
-  /* Black background color */
-  color: #fff;
-  /* White text color */
-  text-align: center;
-  /* Centered text */
-  border-radius: 2px;
-  /* Rounded borders */
-  padding: 16px;
-  /* Padding */
-  position: fixed;
-  /* Sit on top of the screen */
-  z-index: 1;
-  /* Add a z-index if needed */
-  left: 50%;
-  /* Center the snackbar */
-  bottom: 30px;
-  /* 30px from the bottom */
-}
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#snackbar.show {
-  visibility: visible;
-  /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
+@media all and (max-width: 720px) {
+  .table {
+    display: flex;
+    flex-direction: column;
   }
 
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
+  .table tr {
+    width: 100%;
   }
 
-  to {
-    bottom: 0;
-    opacity: 0;
+  .table tr th,
+  .table tr td {
+    display: inline-flex;
+    width: 100%;
   }
 }
