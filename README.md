@@ -26,12 +26,12 @@ I will focus on the following set of requirements while designing the parking lo
 
 Languages and libraries used in this project:
 
-- Languages:
+Languages:
  - JavaScript ES6
  - HTML 5
  - CSS 3
 
-- Libraries
+Libraries
  - BootStrap v4.3.1
  - jQuery v3.4.1
 
@@ -39,8 +39,4 @@ Languages and libraries used in this project:
 
 <div align="center">
   <img src="images/screely0.png" alt="metadata" width="100%">
-  <img src="images/screely1.png" alt="metadata" width="100%">
-  <img src="images/screely2.png" alt="metadata" width="100%">
-  <img src="images/screely3.png" alt="metadata" width="100%">
-  <img src="images/screely4.png" alt="metadata" width="100%">
 </div>
