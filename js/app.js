@@ -20,7 +20,6 @@
 function guid() {
   return parseInt(Date.now() + Math.random())
 }
-
 /**
  * Create and Store New Member
  */
@@ -246,23 +245,25 @@ function deleteMemberData() {
  * @param {string} type
  */
 function sortBy(type) {
-  $('#member_table').find('tr:not(:first)').remove()
-  let totalClickOfType = parseInt(localStorage.getItem(type))
+  $("#member_table").find("tr:not(:first)").remove();
+  var totalClickOfType = parseInt(localStorage.getItem(type));
   if (!totalClickOfType) {
-    totalClickOfType = 1
-    localStorage.setItem(type, totalClickOfType)
+    totalClickOfType = 1;
+    localStorage.setItem(type, totalClickOfType);
   } else {
     if (totalClickOfType == 1) {
-      totalClickOfType = 2
+      totalClickOfType = 2;
     } else {
-      totalClickOfType = 1
+      totalClickOfType = 1;
     }
-    localStorage.setItem(type, totalClickOfType)
+    localStorage.setItem(type, totalClickOfType);
   }
-  const searchKeyword = $('#member_search').val()
-  const members = getFormattedMembers()
-  const sortedMembers = members.sort((a, b) => (totalClickOfType == 2) ? a[type] > b[type] : a[type] < b[type])
-  sortedMembers.forEach((item, index) => {
-    insertIntoTableView(item, index + 1)
+  var searchKeyword = $('#member_search').val();
+  var members = getFormattedMembers();
+  var sortedMembers = members.sort(function (a, b) {
+    return (totalClickOfType == 2) ? a[type] > b[type] : a[type] < b[type];
+  });
+  sortedMembers.forEach(function (item, index) {
+    insertIntoTableView(item, index + 1);
   })
 }
