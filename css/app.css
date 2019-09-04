@@ -10,6 +10,7 @@ body {
   font-size: 16px;
   background-color: #eee;
   color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
 }
 
 h1,
@@ -17,7 +18,7 @@ h2,
 h3,
 h4,
 label {
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .hide {
@@ -60,12 +61,13 @@ label {
 .page-title {
   text-align: center;
   color: #b2b2b2;
-  font-weight: 700;
+  font-weight: 900;
 }
 
-button {
-  margin-bottom: 4px;
-  margin-right: 4px;
+.btn {
+  margin: 2px;
+  padding: 4px 16px;
+  border-radius: 16px;
 }
 
 .slot-button {
@@ -73,10 +75,12 @@ button {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  padding: 16px 32px;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 16px;
   border-radius: 32px;
   width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #member_search {
