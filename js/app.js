@@ -241,7 +241,6 @@ function deleteMemberData() {
  */
 function sortBy(type) {
   $("#member_table").find("tr:not(:first)").remove();
-
   var totalClickOfType = parseInt(localStorage.getItem(type));
   if (!totalClickOfType) {
     totalClickOfType = 1;
@@ -254,14 +253,11 @@ function sortBy(type) {
     }
     localStorage.setItem(type, totalClickOfType);
   }
-
   var searchKeyword = $('#member_search').val();
-  var members = getFormattedMembers();
-
+  var members = getMembers();
   var sortedMembers = members.sort(function (a, b) {
     return (totalClickOfType == 2) ? a[type] > b[type] : a[type] < b[type];
   });
-
   sortedMembers.forEach(function (item, index) {
     insertIntoTableView(item, index + 1);
   })
