@@ -25,18 +25,18 @@ function guid() {
 /**
  * Create and Store New Member
  */
-function saveMemberInfo() {
+var el = document.querySelector('#saveMemberInfo');
+if (el) {
+    el.addEventListener('submit', saveMemberInfo);
+}
+function saveMemberInfo(event) {
+  event.preventDefault();
   const keys = ['reg_no', 'owner_name', 'email', 'd_o_a', 'slot']
   const obj = {}
   keys.forEach((item, index) => {
     const result = document.getElementById(item).value
     if (result) {
       obj[item] = result;
-    } else {
-      alert("All fields are required");
-      window.location.reload();
-      this.preventDefault();
-      return false;
     }
   })
   var members = getMembers()
@@ -59,7 +59,7 @@ function saveMemberInfo() {
     members.push(obj)
     const data = JSON.stringify(members)
     localStorage.setItem('members', data)
-    clearFields()
+    el.reset()
     insertIntoTableView(obj, getTotalRowOfTable())
     $('#addnewModal').modal('hide')
   }
